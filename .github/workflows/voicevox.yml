@@ -12,8 +12,4 @@ jobs:
           curl -OL https://github.com/VOICEVOX/voicevox_engine/releases/download/${VOICEVOX_VERSION}/linux-cpu.7z.001
       - run: sudo apt-get install p7zip-full
       - run: 7z x linux-cpu.7z.001
-      - run: ls
-      - uses: actions/upload-artifact@v3
-        with:
-          name: voicevox-artifacts
-          path: linux-cpu/**
+      - run: ./linux-cpu/run
