@@ -1,0 +1,14 @@
+name: Install VOICEVOX
+on: push
+env:
+  VOICEVOX_VERSION: 0.11.4
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: |
+          curl -OL https://github.com/VOICEVOX/voicevox_engine/releases/download/${VOICEVOX_VERSION}/linux-cpu.7z.txt
+          curl -OL https://github.com/VOICEVOX/voicevox_engine/releases/download/${VOICEVOX_VERSION}/linux-cpu.7z.001
+      - run: apt install p7zip-full
+      - run: 7z x linux-cpu.7z
