@@ -8,8 +8,6 @@ jobs:
     timeout-minutes: 10
     steps:
       - run: |
-          curl -OL https://github.com/VOICEVOX/voicevox_engine/releases/download/${VOICEVOX_VERSION}/linux-cpu.7z.txt
-          curl -OL https://github.com/VOICEVOX/voicevox_engine/releases/download/${VOICEVOX_VERSION}/linux-cpu.7z.001
-      - run: sudo apt-get install p7zip-full
-      - run: 7z x linux-cpu.7z.001
-      - run: ./linux-cpu/run
+          docker pull voicevox/voicevox_engine:cpu-ubuntu20.04-latest
+          docker run --rm -it -p '127.0.0.1:50021:50021' voicevox/voicevox_engine:cpu-ubuntu20.04-latest
+      - run: curl localhost:50021
